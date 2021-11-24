@@ -1,0 +1,21 @@
+XXE to SSRF
+
+Because you can specify URIs in the XML entity, you can use the XXE vulnerability to reach internal assets. 
+
+
+For example, before the introduction of IMDSv2, an attacker could easily retrieve Amazon EC2 instance metadata containing sensitive data
+
+
+XXE to RCE
+
+In PHP applications, you can use the expect:// wrapper to run arbitrary commands on the server.
+For example, in the case of an error-based XXE, you can use the following DTD to run the id command on the vulnerable server:
+
+<!DOCTYPE foo [<!ENTITY myentity SYSTEM "expect://id"> ]>
+
+Then, reference myentity in your XML field.
+
+There are some limitations when it comes to running arbitrary commands because the XML parser evaluates the URI you are 
+using and finds that is is invalid, but you can always find a way to bypass them. 
+Besides, if you can chain an SSRF to an XXE, you can use the Gopher protocol to achieve a Remote Code Execution.
+This awesome article will give you many tips on how to escalate your XXE to RCE. 
