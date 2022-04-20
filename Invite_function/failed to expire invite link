@@ -1,0 +1,30 @@
+Logical issue causing adding of unwanted users to workspace
+
+Hello Team , I have found an issue through which unwanted users can be added to victim's workspace inside *.cloud.mattermost.com  .
+So I have created an workspace with my email id , let's say email1 and invited email2 to my workspace . Email2 is not having an account at mattermost , So email2 will be a fresh account. But I noticed that there is no option present to cancel the invite . This will lead to the issue . Let's see this in detail -
+Real life case - Suppose a victim has invited someone to the workspace by putting email id but later on victim decided to withdraw the email id but there is no such option present due to which attacker can now join the workspace which leads to info disclosure . Also victim can mistype the email while inviting but victim now can't withdraw that email invite.
+Mitigation - There should be an option present to cancel the invite sent to any email.
+Steps to reproduce -
+1) create account at mattermost and then create a workspace for yourself inside -  *.cloud.mattermost.com
+2) now invite email2 (email2 is not having account at mattermost) by invite option
+3) now you will notice that there is no way present to cancel the invite
+4) now email2 can easily join the workspace
+Impact
+Unwanted users can join the workspace leading to information disclosure.
+
+If there is no option to invalidate link then report it.
+
+
+
+
+
+vuln - Invitation Email is resent as a Reminder after invalidating pending email invite
+
+
+Hello @rohitesh_mattermost  I think this attack I explained above is working . So I invited my second email let's say email2 to the team and then I went to system console and invalidated all the invite links , So now that invite link stops working. But after sometime (maybe after 1-2 days) you will again receive a reminder email in email2 inbox which contains the link to join the team and that link is working . 
+Which means if victim by mistake invites someone but then invalidate all invite links then also attacker can join the team by using the link he/she gets on reminder email.
+Steps to reproduce -
+1) invite email2 to the workspace
+2) now after sometime invalidate all the invite link
+3) after sometime you will again receive a reminder email in your inbox which contains a link to join the team
+4) open that link and you will be able to join the team
