@@ -1,0 +1,2 @@
+1. can steal oauth token with open redirect
+2. open redirect to Xss.
