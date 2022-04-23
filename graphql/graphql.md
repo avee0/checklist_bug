@@ -54,3 +54,18 @@ __|
 sql injection
 
 We can also try sql injection in graphql
+
+
+Bonus:
+
+To check availabe query:
+
+       query availableQueries{
+             __schema{
+             queryType{
+                  fields{
+                  name
+                  }
+                 }
+                }
+               }
