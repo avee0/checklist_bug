@@ -4,5 +4,7 @@ commond directories for open graphql instance
 /graphiql
 /graphql.php
 /graphql/console
-
+/graphql
+/graphql.php
+/graphiql.php
 
