@@ -7,3 +7,7 @@ site:*google.com ext:aspx
 site:*google.com ext:asp
 site:*google.com ext:jsp
 site:*google.com ext:action
+
+finding senstive data:
+
+target.com:ext:pdf"confidential"
