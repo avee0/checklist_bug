@@ -1,0 +1,9 @@
+list of google dorks to find parameter
+
+site:*google.com ext:php
+site:*google.com ext:do
+site:*google.com ext:jspx
+site:*google.com ext:aspx
+site:*google.com ext:asp
+site:*google.com ext:jsp
+site:*google.com ext:action
