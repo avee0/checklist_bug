@@ -1,0 +1,185 @@
+Automation for BB
+
+If you have go1.13+ compiler installed: 
+ Run follwing commands
+ 
+go get github.com/dwisiswant0/slackcat
+
+
+
+
+
+Clone this repo in your linux based machine or vps
+
+
+1. git clone https://github.com/hisxo/gitGraber/
+
+    sudo apt-get install python3-pip
+
+    pip3 install -r requirements.txt
+
+2. Create account on slack.com then go to https://api.slack.com/apps?new_app=1
+
+3. Create new app with any name 
+
+4. IN left side click on "Incoming Webhooks"
+
+5. Activate Incoming Webhooks  : It is off now make it on
+
+6. Click Add New Webhook to Workspace.
+
+7. Select any chanel to post alerts
+
+8. Copy webhook URL (mine https://hooks.slack.com/services/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)
+
+9. Now go to https://github.com/settings/tokens
+
+10. Genrate new token : my token e92d320d803f6e07b64f63e540ade0668150286c
+
+
+=====================================================================================================
+
+11. Navigate to your tool path and edit config.py
+
+12. Add your github token GITHUB_TOKENS = ['X', 'X', 'X', 'X', 'X']
+e92d320d803f6e07b64f63e540ade0668150286c
+
+It will look like this
+
+GITHUB_TOKENS = ['e92d320d803f6e07b64f63e540ade0668150286c','e92d320d803f6e07b64f63e540ade0668150286c','e92d320d803f6e07b64f63e540ade0668150286c','e92d320d803f6e07b64f63e540ade0668150286c','e92d320d803f6e07b64f63e540ade0668150286c']
+
+13. Add SLACK_WEBHOOK_URL=
+
+SLACK_WEBHOOKURL = https://hooks.slack.com/services/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
+
+14. Press Cntrl + X , TYpe "Y" hit enter
+
+
+
+Set
+Now run tool
+
+
+python3 gitGraber.py -q oracle.com -s
+
+
+
+
+https://hooks.slack.com/services/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
+
+
+
+
+
+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
+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
+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
+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
+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
+
+
+
+AIzaSyBf5WygDVM-Ib4sKti8pIvLIBYO1luw-J0
+
+
+
+Usage of slackcat:
+  -1    Send message line-by-line
+  -u string
+        Slack Webhook URL
+  -v    Verbose mode
+Workaround
+The goal is to get automated alerts for interesting stuff!
+
+▶ assetfinder dw1.io | anew | slackcat -1 https://hooks.slack.com/services/xxx/xxx/xxx
+The -u flag is optional if you've defined SLACK_WEBHOOK_URL environment variable.
+
+Slackcat also strips the ANSI colors from stdin to send messages, so you'll receive a clean message on your Slack!
+
+▶ nuclei -l urls.txt -t cves/ | slackcat -1 https://hooks.slack.com/services/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
+
+
+
+subfinder -d swiggy.com | httpx | slackcat -1 https://hooks.slack.com/services/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
+cat target.txt | nuclei -t /root/nuclei-templates | slackcat -1 https://hooks.slack.com/services/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
+
+
+1. subdomains
+2. .txt file
+
+
+cat wayback.txt | httpx | grep "config.js" | slackcat -1 https://hooks.slack.com/services/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
+
+
+
+
+
+
+
+
+
+Hi team,
+
+
+Aditya here found unauthorised access on demo server 
+
+URL: https://tokens.atlassian.net/servicedesk/customer/user/signup
+
+image.png
+
+image.png
+
+CVE 2019-14994 based bug hitting your service based applications Vulnerable This advisory discloses a critical severity security vulnerability. Versions of Jira Service Desk Server and Data Center are affected by this vulnerability. Customers who have upgraded Jira Service Desk Server and Data Center to version 3.9.16, 3.16.8, 4.1.3, 4.2.5, 4.3.4, or 4.4.1 are not affected. Customers who have downloaded and installed affected versions of Jira Service Desk Server and Data, please upgrade your Jira Service Desk Server and Data Center installations immediately to fix this vulnerability. By design, Jira Service Desk gives customer portal users permissions only to raise requests and view issues. This allows users to interact with the customer portal without having direct access to Jira. These restrictions can be bypassed by a remote attacker with portal access who exploits a path traversal vulnerability. Exploitation allows an attacker to view all issues within all Jira projects contained in the vulnerable instance. This could include Jira Service Desk projects, Jira Core projects, and Jira Software projects. Impact Attacker can raise unlimited issues. Note that attackers can grant themselves access to Jira Service Desk portals that have the 'Anyone can email the service desk or raise a request in the portal' setting enabled. Changing this setting does not defend against an attacker that has portal access via other means. Atlassian does not recommend changing the setting.  
+
+
+Patched instance ;
+image.png
+
+
+Bug verified by other companies also
+
+
+
+edmodo.atlassian.net/projects
+
+
+
+IMP
+
+1. Check Logo
+2. No logo = dosen't belongs to company
+3. USe burpsuite to scan for json files
+4. Check priv + transfer money , add funds etc
+
+
+
+500
+501
+502
+503
+
+
+Hi team,
+
+
+I found JQL injection in https://wiki.eveoh.nl
+
+
+Description
+The JQL query in our case limits the data to one project and a specific (and rather short) time range (the current month). This restriction is hard-coded and should not change. However, a crafted user value allows us to remove this limitation:
+Martin Schneider' OR created < '2021-01-01
+Now the query becomes
+project = TeamA AND created > startOfMonth() AND assignee = 'Martin Schneider' OR created < '2021-01-01'
+will fetch all tickets from all projects of the entire JIRA instance!
+
+How to reproduce
+Go to https:// wiki.eveoh.nl /issues/?jql=
+in jql paramter put any heavy load crafted payload
+And perform attack  multiple times
+attack vector is to craft JQL queries with bad performance and thus long runtime. I didn’t explore this in detail, but it’s easy to imagine that queries using JQL functions, especially custom ones, can be designed to become quite expensive. JIRA has some safeguards in place, but this might still open an attack vector to perform DoS attacks by sending multiple such queries at the same time.
+
+image.png
+image.png
+Solution
+As a security threat, JQL injection is far from being on the same level as SQL injection. However, there are ways an attacker can exploit it. It is important to understand under which circumstances it poses a threat and how to prevent it.
+With security, having multiple layers of protection is a fundamental principle. In my opinion, input sanitisation should always be one of them.
